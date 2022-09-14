@@ -1,0 +1,24 @@
+{
+  "name": "devter",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "https://moziu4.github.io/devter",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "dependencies": {
+    "next": "12.3.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "eslint": "8.23.1",
+    "eslint-config-next": "12.3.0",
+    "gh-pages": "^4.0.0"
+  }
+}

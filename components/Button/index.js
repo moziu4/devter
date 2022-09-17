@@ -1,11 +1,11 @@
-import styles from '../../styles/Home.module.css';
+import styles from "../../styles/Home.module.css"
 
-export default function Button ({children , onClick}){
-    return (
-        <>
-        <button onClick={onClick} className={styles.button}>
-            {children}
-        </button>
-        </>
-    )
+export default function Button({ children, onClick }) {
+  return (
+    <>
+      <button onClick={onClick} className={styles.button}>
+        {children}
+      </button>
+    </>
+  )
 }

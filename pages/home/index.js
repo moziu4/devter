@@ -2,15 +2,15 @@ import styles from "styles/Homei.module.css"
 import AppLayout from "components/Applayout"
 import { useEffect, useState } from "react"
 import Devit from "components/Devit/inde"
+import useUser from "hooks/useUser"
+import { fetchLasteDevits } from "firebas/client"
 
 export default function HomePage() {
   const [timeline, setTimeline] = useState([])
-
+  const user = useUser()
   useEffect(() => {
-    fetch("http://localhost:3000/api/statuses/home_timeline")
-      .then((res) => res.json())
-      .then(setTimeline)
-  }, [])
+    user && fetchLasteDevits().then(setTimeline)
+  }, [user])
   return (
     <>
       <AppLayout>
@@ -23,10 +23,12 @@ export default function HomePage() {
             return (
               <Devit
                 avatar={devit.avatar}
+                createdAt={devit.createdAt}
                 id={devit.id}
                 key={devit.id}
-                message={devit.message}
-                username={devit.username}
+                content={devit.content}
+                userName={devit.userName}
+                userId={devit.userId}
               />
             )
           })}

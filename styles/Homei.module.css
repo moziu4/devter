@@ -19,7 +19,25 @@
   background: #ffffffee;
   bottom: 0;
   border-top: 1px solid #eee;
+  display: flex;
   height: 49px;
   position: sticky;
   width: 100%;
+}
+
+.nav a {
+  align-items: center;
+  display: flex;
+  flex: 1 1 auto;
+  height: 100%;
+  justify-content: center;
+}
+
+.nav a:hover {
+  background: radial-gradient(#0099ff11 15%, transaparent 16%);
+  background-size: 180px 180px;
+  background-position: center;
+}
+.section {
+  flex: 1;
 }

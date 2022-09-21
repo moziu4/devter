@@ -1,13 +1,66 @@
 .textArea {
-  border: 0;
-  padding: 15px;
+  border: 3px solid transparent;
+  border-radius: 10px;
+  font-size: 21px;
   min-height: 200px;
+  padding: 15px;
   outline: 0;
   resize: none;
-  font-size: 21px;
   width: 100%;
+}
+
+.textAreaHover {
+  border: 3px dashed #09f;
+  border-radius: 10px;
+  font-size: 21px;
+  min-height: 200px;
+  padding: 15px;
+  outline: 0;
+  resize: none;
+  width: 100%;
+}
+
+.form {
+  padding: 10px;
 }
 
 .div {
   padding: 15px;
+}
+
+.formContainer{
+display: flex;
+justify-content: flex-start;
+margin: 15px;
+}
+
+
+.avatar-container {
+  padding-top: 20px;
+  padding-left: 10px;
+}
+.buttonClose {
+  background: rgba(0, 0, 0, 0.3);
+  border: 0;
+  border-radius: 999px;
+  color: #fff;
+  font-size: 24px;
+  width: 32px;
+  height: 32px;
+  top: 15px;
+  position: absolute;
+  right: 15px;
+}
+
+.removeImg {
+  position: relative;
+}
+
+.img {
+  border-radius: 10px;
+  height: auto;
+  width: 100%;
+}
+.boton {
+  margin-left: 15px;
 }

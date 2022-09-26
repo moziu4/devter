@@ -11,9 +11,10 @@ import {
   collection,
   query,
   getDocs,
-  orderBy
+  orderBy,
+  limit
 } from "firebase/firestore"
-import { getStorage,  ref, uploadBytesResumable } from "firebase/storage";
+import { getStorage, ref, uploadBytesResumable } from "firebase/storage"
 
 const firebaseConfig = {
   apiKey: "AIzaSyDootDHQrw4jd5lLv6a-vxsDgxJQfw0wAg",
@@ -29,8 +30,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig)
 const auth = getAuth(app)
 const db = getFirestore(app)
-const storage = getStorage(app);
-
+const storage = getStorage(app)
 
 const mapUserFromFirebaseAuthToUser = (user) => {
   const { displayName, email, photoURL, uid } = user
@@ -71,8 +71,10 @@ export const addDevit = async ({ avatar, content, img, userId, userName }) => {
   await addDoc(collectionRef, payload)
 }
 
+
+
 export const fetchLasteDevits = async () => {
-  const q = query(collection(db, "devits"),orderBy("createdAt", "desc"))
+  const q = query(collection(db, "devits"), orderBy("createdAt", "desc"), limit(20))
 
   const querySnapshot = await getDocs(q)
   return querySnapshot.docs.map((doc) => {
@@ -89,10 +91,7 @@ export const fetchLasteDevits = async () => {
 }
 
 export const uploadImage = (file) => {
-  const ref1 = ref(storage,`images/${file.name}`)
-  const task = uploadBytesResumable(ref1,file)
+  const ref1 = ref(storage, `images/${file.name}`)
+  const task = uploadBytesResumable(ref1, file)
   return task
-
 }
-
-

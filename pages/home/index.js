@@ -1,5 +1,4 @@
 import styles from "styles/Homei.module.css"
-import AppLayout from "components/Applayout"
 import { useEffect, useState } from "react"
 import Devit from "components/Devit"
 import useUser from "hooks/useUser"
@@ -18,7 +17,7 @@ export default function HomePage() {
   }, [user])
   return (
     <>
-      <AppLayout>
+      
         <Head>
           <title>Home / Devter</title>
         </Head>
@@ -38,7 +37,6 @@ export default function HomePage() {
                 content={devit.content}
                 userName={devit.userName}
                 userId={devit.userId}
-
               />
             )
           })}
@@ -60,7 +58,7 @@ export default function HomePage() {
             </a>
           </Link>
         </nav>
-      </AppLayout>
+      
     </>
   )
 }

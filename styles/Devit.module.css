@@ -4,6 +4,11 @@
   padding: 10px 15px;
 }
 
+.article:hover{
+  background: #f5f8fa;
+  cursor: pointer
+}
+
 .div {
   padding-right: 10px;
 }
@@ -17,12 +22,21 @@
   margin: 0.5;
 }
 
-.span {
-  margin: 0.5px;
+.punto {
+  margin: 1px;
 }
 .date {
   color: #555;
   font-size: 14px;
+  text-decoration: none;
+}
+
+.date:hover {
+  text-decoration: underline;
+}
+
+.time{
+  vertical-align: middle;
 }
 
 .img {
@@ -30,5 +44,4 @@
   height: auto;
   margin-top: 10px;
   width: 100%;
-
 }

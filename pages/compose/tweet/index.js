@@ -1,4 +1,3 @@
-import AppLayout from "components/Applayout"
 import Button from "components/Button"
 import styles from "styles/Tweet.module.css"
 import useUser from "hooks/useUser"
@@ -7,8 +6,7 @@ import { addDevit, uploadImage } from "firebas/client"
 import { useRouter } from "next/router"
 import Head from "next/head"
 import Avatar from "components/Avatar"
-import { getDownloadURL } from "firebase/storage";
-
+import { getDownloadURL } from "firebase/storage"
 
 const COMPOSE_STATES = {
   USER_NOT_KNOWN: 0,
@@ -31,7 +29,7 @@ export default function ComposeTweet() {
 
   const [drag, setDrag] = useState(DRAG_IMAGE_STATE.NONE)
   const [task, setTask] = useState(null)
-  const [imgURL, setImgURL] = useState('')
+  const [imgURL, setImgURL] = useState("")
 
   const user = useUser()
   const router = useRouter()
@@ -42,7 +40,7 @@ export default function ComposeTweet() {
       const onError = () => {}
       const onComplete = () => {
         console.log("onComplete")
-        getDownloadURL(task.snapshot.ref).then(downloadURL => {
+        getDownloadURL(task.snapshot.ref).then((downloadURL) => {
           setImgURL(downloadURL)
         })
       }
@@ -64,7 +62,7 @@ export default function ComposeTweet() {
       content: message,
       userId: user.uid,
       userName: user.username,
-      img: imgURL
+      img: imgURL,
     })
       .then(() => {
         router.push("/home")
@@ -90,19 +88,18 @@ export default function ComposeTweet() {
 
     const task = uploadImage(file)
     setTask(task)
-    
   }
 
   const isButtonDisabled = !message.length || status === COMPOSE_STATES.LOADING
 
   return (
     <>
-      <AppLayout>
+      
         <Head>
           <title>Crear un Devit / Devter</title>
         </Head>
         <section className={styles.formContainer}>
-          {user &&<Avatar src={user.avatar}/>}
+          {user && <Avatar src={user.avatar} />}
         </section>
         <form className={styles.form} onSubmit={handleSubmit}>
           <textarea
@@ -119,16 +116,23 @@ export default function ComposeTweet() {
             }
           ></textarea>
           {imgURL && (
-              <section className={styles.removeImg}>
-                <button className={styles.buttonClose} onClick={() => setImgURL(null)}>x</button>
-                <img className={styles.img} src={imgURL} />
-              </section>
-            )}
+            <section className={styles.removeImg}>
+              <button
+                className={styles.buttonClose}
+                onClick={() => setImgURL(null)}
+              >
+                x
+              </button>
+              <img className={styles.img} src={imgURL} />
+            </section>
+          )}
           <div>
-            <Button className={styles.boton} disabled={isButtonDisabled}>Devitear</Button>
+            <Button className={styles.boton} disabled={isButtonDisabled}>
+              Devitear
+            </Button>
           </div>
         </form>
-      </AppLayout>
+      
     </>
   )
 }
